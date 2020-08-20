@@ -1,13 +1,16 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { HashRouter } from 'react-router-dom'
 import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 
+const baseName = document.getElementsByTagName('base')[0].getAttribute('href')
+
 ReactDOM.render(
-  <React.StrictMode>
+  <HashRouter basename={baseName}>
     <App />
-  </React.StrictMode>,
+  </HashRouter>,
   document.getElementById('root')
 );
 
