@@ -1,10 +1,9 @@
 import React, { useState } from 'react'
 
-
 function Terminals() {
     const [name, setName] = useState(['Наименование'])
     const [diff, setDiff] = useState(['Описание'])
-    const [buf, setbuf] = useState([{ name: 'lll', diff: 'diff' }])
+    const [buf, setbuf] = useState([{ name: 'первый', diff: 'много текста' }])
 
     const Add = () => {
         setbuf((p) => p = [...p, { name, diff }])

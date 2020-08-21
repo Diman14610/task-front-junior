@@ -1,8 +1,8 @@
 import React, { useState } from 'react'
 
 const Authorization = ({ upUrl = f => f }) => {
-    const [login, setLogin] = useState('diman14610')
-    const [password, setPassword] = useState('Saffghjhgfds231ewq')
+    const [login, setLogin] = useState('')
+    const [password, setPassword] = useState('')
 
     const Auto = () => {
         if (login && login !== ' ') {
@@ -20,17 +20,17 @@ const Authorization = ({ upUrl = f => f }) => {
                     .catch(() => console.log('error'))
             }
             else {
-                alert('Пароль должен быть с заглавной буквы и иметь хотя бы 1 цифру')
+                alert('Пароль должен быть с заглавной буквы, иметь длину не менее 8 символов, и содержать хотя бы 1 цифру')
             }
         }
     }
     return (
         <div>
-            <input placeholder='name' type='text' defaultValue={login} onChange={e => setLogin(e.target.value)} />
+            <input placeholder='name' type='text' onChange={e => setLogin(e.target.value)} />
 
-            <input placeholder='password' type='text' defaultValue={password} onChange={e => setPassword(e.target.value)} />
+            <input placeholder='password' type='text' onChange={e => setPassword(e.target.value)} />
 
-            <button onClick={() => Auto()}>Sign in</button>
+            <button onClick={() => Auto()}>Войти</button>
 
         </div>
 
