@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { Link } from 'react-router-dom'
 
 const l = [{ id: 1, name: 'Дмитрий', avg: 450, quantity: 12, total: 1500 },
 { id: 2, name: 'Дмитрий', avg: 532, quantity: 87, total: 4600 },
@@ -21,6 +22,11 @@ function Buyers() {
     const [list, setList] = useState(l)
     const [buf, setBuf] = useState(l)
 
+    const Pagination = (size, def = 0) => {
+        setList(
+            () => buf.slice(def, size)
+        )
+    }
     const Sorting = (field, asc = true) => {
         switch (field) {
             case 'avg':
@@ -63,11 +69,11 @@ function Buyers() {
                 <caption>
                     Покупатели
                     <div>
-                <button>5</button>
-                <button>10</button>
-                <button>15</button>
-            </div>
-                    </caption>
+                        <button onClick={() => Pagination(5)}>5</button>
+                        <button onClick={() => Pagination(10)}>10</button>
+                        <button onClick={() => Pagination(15)}>15</button>
+                    </div>
+                </caption>
                 <thead>
                     <tr>
                         <th>
@@ -117,16 +123,26 @@ function Buyers() {
                         list.map((v, i) => {
                             return (<tr key={i}>
                                 <td>{v.id}</td>
-                                <td>{v.name}</td>
+                                <td><Link to={`/buyers/${v.id}`}>{v.name}</Link></td>
                                 <td>{v.avg}</td>
                                 <td>{v.quantity}</td>
                                 <td>{v.total}</td>
                             </tr>)
                         })
                     }
+                    {
+                        list.length === 5 ? (
+                            <tr style={{ display: 'flex', backgroundColor: '#fff' }}>
+
+                                <td><button onClick={() => Pagination(5, 0)}>1</button></td>
+                                <td><button onClick={() => Pagination(10, 5)}>2</button></td>
+                                <td><button onClick={() => Pagination(15, 10)}>3</button></td>
+                            </tr>
+
+                        ) : null
+                    }
                 </tbody>
             </table>
-           
         </div>
     )
 }
