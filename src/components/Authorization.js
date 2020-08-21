@@ -6,24 +6,22 @@ const Authorization = ({ upUrl = f => f }) => {
 
     const Auto = () => {
         if (login && login !== ' ') {
-            fetch(`https://avatars.githubusercontent.com/${login}`)
-                .then((e) =>
-                    e.blob().then(e2 => {
-                        if (e2.size !== 5065) {
-                            upUrl(e.url)
-                        }
-                        else
-                            alert('Пользователь не найден')
-                    })
-                )
-                .catch(() => console.log('error'))
-        }
-
-        if (password.length >= 8 && password.includes(password[0].toUpperCase()) && password.replace(/\D/g, '').length > 0) {
-            // continue
-        }
-        else {
-            alert('Пароль должен быть с заглавной буквы и иметь хотя бы 1 цифру')
+            if (password.length >= 8 && password.includes(password[0].toUpperCase()) && password.replace(/\D/g, '').length > 0) {
+                fetch(`https://avatars.githubusercontent.com/${login}`)
+                    .then((e) =>
+                        e.blob().then(e2 => {
+                            if (e2.size !== 5065) {
+                                upUrl(e.url)
+                            }
+                            else
+                                alert('Пользователь не найден')
+                        })
+                    )
+                    .catch(() => console.log('error'))
+            }
+            else {
+                alert('Пароль должен быть с заглавной буквы и иметь хотя бы 1 цифру')
+            }
         }
     }
     return (

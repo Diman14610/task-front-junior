@@ -1,8 +1,7 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Route, Switch } from 'react-router-dom'
 import './App.css';
 
-import Authorization from './components/Authorization'
 import Aside from './components/Aside'
 import Terminals from './components/Terminals'
 import Buyers from './components/Buyers'
@@ -11,7 +10,7 @@ import Error from './components/Error'
 
 function App() {
   return (
-    <div style={{ display: 'flex', columnGap: '1rem' }}>
+    <div className='container'>
       <Aside />
 
       <Switch>

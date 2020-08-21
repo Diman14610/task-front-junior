@@ -10,15 +10,16 @@ function Terminals() {
         setbuf((p) => p = [...p, { name, diff }])
     }
     return (
-        <div>
-            <div>
-                <input type='text' placeholder='Название терминала' onChange={e => setName(e.target.value)} />
-                <input type='text' placeholder='Описание' onChange={e => setDiff(e.target.value)} />
+        <div className='container-table'>
 
-                <button onClick={() => Add()}>Добавить</button>
-            </div>
 
             <div>
+                <div>
+                    <input type='text' placeholder='Название терминала' onChange={e => setName(e.target.value)} />
+                    <input type='text' placeholder='Описание' onChange={e => setDiff(e.target.value)} />
+
+                    <button onClick={() => Add()}>Добавить</button>
+                </div>
                 <table>
                     <caption>Терминалы</caption>
                     <thead>
