@@ -19,6 +19,7 @@ td, th {
 
 tr {
   vertical-align: baseline;
+  background-color: #edefff;
 }
 
 tr:nth-child(odd) {
@@ -95,4 +96,19 @@ tr:nth-child(odd) {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
+}
+
+@media screen and (max-width: 31.25em) {
+
+  table, thead, tbody, th, th, td {
+    display: block;
+  }
+  thead tr {
+    position: absolute;
+    top: -9999px;
+    left: -9999px;
+  }
+  tr {
+    margin-bottom: 1em;
+  }
 }
